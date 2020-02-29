@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LoginScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/BobaMakingScene.unity
+    guid: d775f77a775b91e41a007d32ac4c38b9
   - enabled: 1
-    path: Assets/Scenes/DashboardScene.unity
-    guid: a393dbb837b404374bc5cf4bded064db
+    path: Assets/Scenes/LoginScene.unity
+    guid: bcd9843deabee42dc985a5ed93142fde
+  - enabled: 1
+    path: Assets/Scenes/ShopScene.unity
+    guid: 1b044ce8a613b4369994f8d1b794d9a0
   m_configObjects: {}
