@@ -9,12 +9,16 @@ public class HeatControl : MonoBehaviour
     public GameObject flame2;
     public GameObject flame3;
 
+    public GameObject deleteIcon;
+
     public GameObject progressBar;
     public GameObject acceptedRange;
     public Transform fullBar;
     public Transform barFill;
 
     bool mousePressed = false;
+    bool flameInProgress = false;
+    bool startedFlame = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +33,65 @@ public class HeatControl : MonoBehaviour
     {
         if (mousePressed)
         {
+            flame1.SetActive(true);
+            /*
+            if (!startedFlame)
+            {
+                startedFlame = true;
+                Vector3 newLocation = new Vector3(0.02f, -2.14f, 0);
+                cloneFlame1 = (GameObject)Instantiate(flame1, newLocation, Quaternion.identity);
+            }
+            */
             //Debug.Log("heat percent: " + BobaMaking.currHeatPercent);
             fillProgressBar();
+            if (!flameInProgress)
+            {
+                flameAnimate();
+            }
         }
+    }
+
+    void initiateFlame2()
+    {
+        flame2.SetActive(true);
+    }
+
+    void initiateFlame3()
+    {
+        flame3.SetActive(true);
+    }
+
+    void destroyFlame2()
+    {
+        flame2.SetActive(false);
+    }
+
+    void destroyFlame3()
+    {
+        flame3.SetActive(false);
+    }
+
+    void flameAnimate()
+    {
+        flameInProgress = true;
+        //Debug.Log("flamingggg");
+        Invoke("initiateFlame2", 0.3f);
+        Invoke("initiateFlame3", 0.6f);
+        Invoke("destroyFlame3", 0.9f);
+        Invoke("destroyFlame2", 1.2f);
+        Invoke("initiateFlame2", 1.5f);
+        Invoke("initiateFlame3", 1.8f);
+        Invoke("destroyFlame3", 2.1f);
+        Invoke("destroyFlame2", 2.4f);
+        Invoke("initiateFlame2", 2.7f);
+        Invoke("initiateFlame3", 3.0f);
+        Invoke("destroyFlame3", 3.3f);
+        Invoke("destroyFlame2", 3.6f);
+
+        //flameInProgress = false;
+        //Debug.Log("flame: " + flameInProgress);
+
+
     }
 
     void fillProgressBar()
@@ -45,29 +105,6 @@ public class HeatControl : MonoBehaviour
             newScale.y = this.fullBar.localScale.y * fillAmount;
             this.barFill.localScale = newScale;
 
-            if (BobaMaking.currHeatPercent >= 0.25f && !BobaMaking.flame1)
-            {
-                //Instantiate(flame1, new Vector2(0.02f, -2.14f), Quaternion.identity);
-                flame1.SetActive(true);
-                //Destroy(flame1clone, 0.5f);
-                BobaMaking.flame1 = true;
-            }
-            else if (BobaMaking.currHeatPercent >= 0.50f && !BobaMaking.flame2)
-            {
-                //GameObject flame2clone = Instantiate(flame2, new Vector2(0.02f, -2.14f), Quaternion.identity);
-                //Destroy(flame2clone, 0.5f);
-                flame2.SetActive(true);
-                flame1.SetActive(false);
-                BobaMaking.flame2 = true;
-            }
-            else if (BobaMaking.currHeatPercent >= 0.75f && !BobaMaking.flame3)
-            {
-                //GameObject flame3clone = Instantiate(flame3, new Vector2(0.02f, -2.14f), Quaternion.identity);
-                //Destroy(flame3clone, 0.5f);
-                flame3.SetActive(true);
-                flame2.SetActive(false);
-                BobaMaking.flame3 = true;
-            }
         }
         else
         {
@@ -75,8 +112,44 @@ public class HeatControl : MonoBehaviour
             {
                 Debug.Log("ITS BURNED");
                 BobaMaking.isBurned = true;
+                // empty the cup
+                emptyCup();
             }
         }
+    }
+
+    void emptyCup()
+    {
+        Vector3 newLocation = new Vector3(0, 0.3f, 0);
+        GameObject clone = (GameObject)Instantiate(deleteIcon, newLocation, Quaternion.identity);
+
+        GameObject[] clones = GameObject.FindGameObjectsWithTag("Clone");
+
+        foreach (GameObject cloneObj in clones)
+        {
+            Destroy(cloneObj);
+        }
+
+        BobaMaking.currIceLevel = 1;
+        BobaMaking.currSugarLevel = 1;
+        BobaMaking.currLayer = 1;
+        BobaMaking.isFull = false;
+        BobaMaking.currSatisficationLevel = 100;
+        BobaMaking.currOrderTimeTaken = 0;
+        BobaMaking.flame1 = false;
+        BobaMaking.flame2 = false;
+        BobaMaking.flame3 = false;
+        BobaMaking.currHeatPercent = 0f;
+
+        BobaMaking.currMoney = BobaMaking.currMoney - 10;
+        BobaMaking.workingOrder = new BobaMaking.Order("");
+        if (BobaMaking.currMoney < 0)
+        {
+            Debug.Log("U SUCK");
+        }
+        BobaMaking.delete = true;
+
+        Destroy(clone, 1.0f);
     }
 
     void OnMouseDown()
@@ -122,5 +195,10 @@ public class HeatControl : MonoBehaviour
         var newFillScale = this.barFill.localScale;
         newFillScale.y = 0;
         this.barFill.localScale = newFillScale;
+        CancelInvoke();
+        flame1.SetActive(false);
+        flame2.SetActive(false);
+        flame3.SetActive(false);
+        flameInProgress = false;
     }
 }

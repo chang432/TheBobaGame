@@ -19,6 +19,8 @@ public class MenuSwitch : MonoBehaviour
     public GameObject toppingBackground;
     public GameObject boba;
     public GameObject pudding;
+    public GameObject bobaDragStart;
+    public GameObject puddingDragStart;
     // add other toppings
 
     // for now I'm just going to leave the locks stagnant across both pages because I don't care about them 
@@ -26,6 +28,15 @@ public class MenuSwitch : MonoBehaviour
     // sets all parts of tea menu active
     void setTeaActive()
     {
+        /*
+        GameObject[] clones = GameObject.FindGameObjectsWithTag("Clone");
+
+        foreach (GameObject cloneObj in clones)
+        {
+            Destroy(cloneObj);
+        }
+        */
+
         BobaMaking.currTab = "teaTab";
         teaBackground.SetActive(true);
         greenTea.SetActive(true);
@@ -34,6 +45,8 @@ public class MenuSwitch : MonoBehaviour
         toppingBackground.SetActive(false);
         boba.SetActive(false);
         pudding.SetActive(false);
+        bobaDragStart.SetActive(false);
+        puddingDragStart.SetActive(false);
         //Debug.Log("currTab: " + BobaMaking.currTab);
     }
 
@@ -44,6 +57,8 @@ public class MenuSwitch : MonoBehaviour
         toppingBackground.SetActive(true);
         boba.SetActive(true);
         pudding.SetActive(true);
+        bobaDragStart.SetActive(true);
+        puddingDragStart.SetActive(true);
 
         teaBackground.SetActive(false);
         greenTea.SetActive(false);
