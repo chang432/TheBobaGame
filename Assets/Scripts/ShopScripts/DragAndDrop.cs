@@ -24,29 +24,33 @@ public class DragAndDrop : MonoBehaviour
 
             Vector2 mouseRay = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D raycast = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, layerMask);
+            handleDecorationPlacement(raycast);
 
-            if (raycast.collider == null && finalObj != null)
-            {
-                Debug.Log("place thing");
-                Instantiate(finalObj, transform.position, Quaternion.identity);
-            }
-            else if (finalObj == null && raycast.collider != null)
+        }
+
+    }
+
+    private void handleDecorationPlacement(RaycastHit2D raycast)
+    {
+        if (raycast.collider == null && finalObj != null)
+        {
+            Debug.Log("place thing");
+            Instantiate(finalObj, transform.position, Quaternion.identity);
+        }
+        else if (finalObj == null && raycast.collider != null)
+        {
+            finalObj = raycast.collider.gameObject;
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = finalObj.GetComponent<SpriteRenderer>().sprite;
+        }
+        else if (raycast.collider != null && finalObj != null)
+        {
+            if (raycast.collider.gameObject != finalObj)
             {
                 finalObj = raycast.collider.gameObject;
                 SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = finalObj.GetComponent<SpriteRenderer>().sprite;
             }
-            else if (raycast.collider != null && finalObj != null)
-            {
-                if (raycast.collider.gameObject != finalObj)
-                {
-                    finalObj = raycast.collider.gameObject;
-                    SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-                    spriteRenderer.sprite = finalObj.GetComponent<SpriteRenderer>().sprite;
-                }
-            }
-
         }
-
     }
 }
