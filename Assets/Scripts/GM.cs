@@ -15,6 +15,8 @@ public class GM : MonoBehaviour
 
     public static List<string> toppings = new List<string>();
 
+    public static List<string> teas = new List<string>();
+
     public void LoadLoginScene()
     {
         SceneManager.LoadScene("LoginScene");
@@ -72,8 +74,21 @@ public class GM : MonoBehaviour
         return c;
     }
 
+    public void addTea(string s)
+    {
+        teas.Add(s);
+    }
 
+    public string removeTea(string s)
+    {
+        teas.Remove(s);
+        return s;
+    }
 
+    public bool teaAvailable(string s)
+    {
+        return teas.Contains(s);
+    }
 
 }
 
