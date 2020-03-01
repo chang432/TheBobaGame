@@ -9,6 +9,8 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     public static int money;
 
+    public static List<GameObject> customers = new List<GameObject>();
+
     public void LoadLoginScene()
     {
         SceneManager.LoadScene("LoginScene");
@@ -33,6 +35,13 @@ public class GM : MonoBehaviour
     {
         return money;
     }
+
+    public void addCustomer(GameObject customer)
+    {
+        customers.Add(customer);
+    }
+
+
 
 
 
