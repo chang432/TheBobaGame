@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //static data structures and variables
     public static int money;
 
     public static string username;
@@ -23,7 +23,7 @@ public class GM : MonoBehaviour
 
 
 
-
+    //Use to load scenes
     public void LoadLoginScene()
     {
         SceneManager.LoadScene("LoginScene");
@@ -45,7 +45,7 @@ public class GM : MonoBehaviour
 
 
 
-
+    //getters, setters, and contains funcions
     public void setUsername(string s)
     {
         username = s;
