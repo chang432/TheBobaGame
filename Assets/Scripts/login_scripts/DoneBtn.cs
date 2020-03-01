@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DoneBtn : MonoBehaviour
 {
+    [SerializeField]
+    public GM GameManager;
+
     Patrol p;
     public GameObject customer;
     private void OnMouseDown()
@@ -18,5 +21,8 @@ public class DoneBtn : MonoBehaviour
             p.moving.x = -1;
             p.moving.y = 0;
         }
+
+        GameManager.removeCustomer();
+
     }
 }

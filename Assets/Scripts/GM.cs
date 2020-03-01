@@ -39,6 +39,7 @@ public class GM : MonoBehaviour
     public void addCustomer(GameObject customer)
     {
         customers.Enqueue(customer);
+        //Debug.Log(customers.Count);
     }
 
     public GameObject removeCustomer()
