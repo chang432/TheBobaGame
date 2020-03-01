@@ -9,6 +9,8 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     public static int money;
 
+    public static Queue<GameObject> customers = new Queue<GameObject>();
+
     public void LoadLoginScene()
     {
         SceneManager.LoadScene("LoginScene");
@@ -33,6 +35,19 @@ public class GM : MonoBehaviour
     {
         return money;
     }
+
+    public void addCustomer(GameObject customer)
+    {
+        customers.Enqueue(customer);
+        //Debug.Log(customers.Count);
+    }
+
+    public GameObject removeCustomer()
+    {
+        return customers.Dequeue();
+    }
+
+
 
 
 

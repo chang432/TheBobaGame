@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DoneBtn : MonoBehaviour
 {
+    [SerializeField]
+    public GM GameManager;
+
     Patrol p;
     public GameObject customer;
     int index = 0;
@@ -20,5 +23,8 @@ public class DoneBtn : MonoBehaviour
             p.moving.x = -1;
             p.moving.y = 0;
         }
+
+        GameManager.removeCustomer();
+
     }
 }

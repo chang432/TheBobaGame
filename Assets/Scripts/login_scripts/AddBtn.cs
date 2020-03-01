@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AddBtn : MonoBehaviour
 {
+    [SerializeField]
+    public GM GameManager;
+
     public GameObject customer;
     Patrol p;
     int index = 0;
@@ -17,5 +20,6 @@ public class AddBtn : MonoBehaviour
         p = newcustomer.GetComponent<Patrol>();
         p.moving.x = -1;
         p.moving.y = 0;
+        GameManager.addCustomer(customer);
     }
 }
