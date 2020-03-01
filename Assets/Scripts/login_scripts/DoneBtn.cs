@@ -8,14 +8,13 @@ public class DoneBtn : MonoBehaviour
     public GM GameManager;
 
     Patrol p;
-    public GameObject customer;
     int index = 0;
     private void OnMouseDown()
     {
         print("done btn pressed");
+        GameObject customer = GameObject.Find("Customer_" + index);
         index++;
-        GameObject customer1 = GameObject.Find("customer_" + index);
-        p = customer1.GetComponent<Patrol>();
+        p = customer.GetComponent<Patrol>();
 
         if (p.animator.GetFloat("VerticalIdle") != 0)
         {
@@ -24,7 +23,7 @@ public class DoneBtn : MonoBehaviour
             p.moving.y = 0;
         }
 
-        GameManager.removeCustomer();
+        //GameManager.removeCustomer();
 
     }
 }
