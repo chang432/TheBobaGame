@@ -9,7 +9,11 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     public static int money;
 
-    public static Queue<GameObject> customers = new Queue<GameObject>();
+    public static Queue<GameObject> customersInLine = new Queue<GameObject>();
+
+    public static List<GameObject> customersInShop = new List<GameObject>();
+
+    public static List<string> toppings = new List<string>();
 
     public void LoadLoginScene()
     {
@@ -36,17 +40,37 @@ public class GM : MonoBehaviour
         return money;
     }
 
-    public void addCustomer(GameObject customer)
+    public void addCustomerToLine(GameObject customer)
     {
-        customers.Enqueue(customer);
+        customersInLine.Enqueue(customer);
         //Debug.Log(customers.Count);
     }
 
-    public GameObject removeCustomer()
+    public GameObject removeCustomerFromLine()
     {
-        return customers.Dequeue();
+        return customersInLine.Dequeue();
     }
 
+    public bool toppingAvailable(string topping)
+    {
+        return toppings.Contains(topping);
+    }
+
+    public void addTopping(string t)
+    {
+        toppings.Add(t);
+    }
+
+    public void addCustomerToShop(GameObject c)
+    {
+        customersInShop.Add(c);
+    }
+
+    public GameObject removeCustomerFromShop(GameObject c)
+    {
+        customersInShop.Remove(c);
+        return c;
+    }
 
 
 
