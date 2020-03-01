@@ -9,6 +9,8 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     public static int money;
 
+    public static string username;
+
     public static Queue<GameObject> customersInLine = new Queue<GameObject>();
 
     public static List<GameObject> customersInShop = new List<GameObject>();
@@ -16,6 +18,8 @@ public class GM : MonoBehaviour
     public static List<string> toppings = new List<string>();
 
     public static List<string> teas = new List<string>();
+
+
 
     public void LoadLoginScene()
     {
@@ -30,6 +34,23 @@ public class GM : MonoBehaviour
     public void LoadBobaMakingScene()
     {
         SceneManager.LoadScene("BobaMakingScene");
+    }
+
+
+
+
+
+
+
+
+    public void setUsername(string s)
+    {
+        username = s;
+    }
+
+    public string getUsername()
+    {
+        return username;
     }
 
     public void setMoney(int value)
