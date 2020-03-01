@@ -1,11 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GM : MonoBehaviour
 {
     // Start is called before the first frame update
     public static int money;
+
+    public void LoadLoginScene()
+    {
+        SceneManager.LoadScene("LoginScene");
+    }
+
+    public void LoadShopScene()
+    {
+        SceneManager.LoadScene("ShopScene");
+    }
+
+    public void LoadBobaMakingScene()
+    {
+        SceneManager.LoadScene("BobaMakingScene");
+    }
 
     public void setMoney(int value)
     {
@@ -16,4 +33,8 @@ public class GM : MonoBehaviour
     {
         return money;
     }
+
+
+
 }
+
