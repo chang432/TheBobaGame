@@ -8,11 +8,15 @@ public class decorationsMenu : MonoBehaviour
     public GameObject shopManager;
 
     [SerializeField]
+    public GM GameManager;
+
+    [SerializeField]
     public GameObject decorationsMeanu;
 
    
     void OnMouseDown()
     {
         decorationsMeanu.SetActive(true);
+        GameManager.LoadLoginScene();
     }
 }
