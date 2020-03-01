@@ -5,11 +5,12 @@ using UnityEngine;
 public class DoneBtn : MonoBehaviour
 {
     Patrol p;
-    GameObject customer1;
+    public GameObject customer;
     private void OnMouseDown()
     {
-        customer1 = GameObject.Find("Customer1");
-        p = customer1.GetComponent<Patrol>();
+        print("done btn pressed");
+        GameObject customer1 = GameObject.Find("Customer1");
+        p = customer.GetComponent<Patrol>();
 
         if (p.animator.GetFloat("VerticalIdle") != 0)
         {
