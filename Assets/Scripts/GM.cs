@@ -41,6 +41,11 @@ public class GM : MonoBehaviour
         customers.Enqueue(customer);
     }
 
+    public GameObject removeCustomer()
+    {
+        return customers.Dequeue();
+    }
+
 
 
 
