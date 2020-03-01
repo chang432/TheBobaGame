@@ -11,6 +11,8 @@ public class GM : MonoBehaviour
 
     public static string username;
 
+    public static int xp;
+
     public static Queue<GameObject> customersInLine = new Queue<GameObject>();
 
     public static List<GameObject> customersInShop = new List<GameObject>();
@@ -18,6 +20,7 @@ public class GM : MonoBehaviour
     public static List<string> toppings = new List<string>();
 
     public static List<string> teas = new List<string>();
+
 
 
 
@@ -51,6 +54,16 @@ public class GM : MonoBehaviour
     public string getUsername()
     {
         return username;
+    }
+
+    public void setXP(int x)
+    {
+        xp = x;
+    }
+
+    public int getXP()
+    {
+        return xp;
     }
 
     public void setMoney(int value)
