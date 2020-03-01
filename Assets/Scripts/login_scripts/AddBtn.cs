@@ -12,7 +12,7 @@ public class AddBtn : MonoBehaviour
         //print("addbtn pressed");
         GameObject newcustomer = Instantiate(customer, new Vector3(327,-452,0), Quaternion.identity) as GameObject;
         //Instantiate(customer, new Vector3(327,-452,0), Quaternion.identity);
-       	index++; 
+    	index++; 
         newcustomer.name = "customer_" + index;
         p = newcustomer.GetComponent<Patrol>();
         p.moving.x = -1;

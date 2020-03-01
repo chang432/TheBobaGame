@@ -6,11 +6,13 @@ public class DoneBtn : MonoBehaviour
 {
     Patrol p;
     public GameObject customer;
+    int index = 0;
     private void OnMouseDown()
     {
         print("done btn pressed");
-        GameObject customer1 = GameObject.Find("Customer1");
-        p = customer.GetComponent<Patrol>();
+        index++;
+        GameObject customer1 = GameObject.Find("customer_" + index);
+        p = customer1.GetComponent<Patrol>();
 
         if (p.animator.GetFloat("VerticalIdle") != 0)
         {
