@@ -6,11 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //static data structures and variables
     public static int money;
 
-    public static Queue<GameObject> customers = new Queue<GameObject>();
+    public static string username;
 
+    public static int xp;
+
+    public static Queue<GameObject> customersInLine = new Queue<GameObject>();
+
+    public static List<GameObject> customersInShop = new List<GameObject>();
+
+    public static List<string> toppings = new List<string>();
+
+    public static List<string> teas = new List<string>();
+
+
+
+    //Use to load scenes
     public void LoadLoginScene()
     {
         SceneManager.LoadScene("LoginScene");
@@ -26,6 +39,33 @@ public class GM : MonoBehaviour
         SceneManager.LoadScene("BobaMakingScene");
     }
 
+
+
+
+
+
+
+    //getters, setters, and contains funcions
+    public void setUsername(string s)
+    {
+        username = s;
+    }
+
+    public string getUsername()
+    {
+        return username;
+    }
+
+    public void setXP(int x)
+    {
+        xp = x;
+    }
+
+    public int getXP()
+    {
+        return xp;
+    }
+
     public void setMoney(int value)
     {
         money = value;
@@ -36,20 +76,53 @@ public class GM : MonoBehaviour
         return money;
     }
 
-    public void addCustomer(GameObject customer)
+    public void addCustomerToLine(GameObject customer)
     {
-        customers.Enqueue(customer);
+        customersInLine.Enqueue(customer);
         //Debug.Log(customers.Count);
     }
 
-    public GameObject removeCustomer()
+    public GameObject removeCustomerFromLine()
     {
-        return customers.Dequeue();
+        return customersInLine.Dequeue();
     }
 
+    public bool toppingAvailable(string topping)
+    {
+        return toppings.Contains(topping);
+    }
 
+    public void addTopping(string t)
+    {
+        toppings.Add(t);
+    }
 
+    public void addCustomerToShop(GameObject c)
+    {
+        customersInShop.Add(c);
+    }
 
+    public GameObject removeCustomerFromShop(GameObject c)
+    {
+        customersInShop.Remove(c);
+        return c;
+    }
+
+    public void addTea(string s)
+    {
+        teas.Add(s);
+    }
+
+    public string removeTea(string s)
+    {
+        teas.Remove(s);
+        return s;
+    }
+
+    public bool teaAvailable(string s)
+    {
+        return teas.Contains(s);
+    }
 
 }
 
