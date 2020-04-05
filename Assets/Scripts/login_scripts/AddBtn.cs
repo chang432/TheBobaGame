@@ -9,7 +9,7 @@ public class AddBtn : MonoBehaviour
 
     public GameObject customer;
     Patrol p;
-    int index = 1;
+    int index = 0;
     private void OnMouseDown()
     {
         //print("addbtn pressed");
@@ -20,6 +20,6 @@ public class AddBtn : MonoBehaviour
         p = newcustomer.GetComponent<Patrol>();
         p.moving.x = -1;
         p.moving.y = 0;
-        GameManager.addCustomer(customer);
+        GameManager.addCustomerToLine(customer);
     }
 }
