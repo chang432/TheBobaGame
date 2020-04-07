@@ -8,15 +8,17 @@ public class AddBtn : MonoBehaviour
     public GM GameManager;
 
     public GameObject customer;
-    Patrol p;
-    int index = 0;
+    public Patrol p;
+    public Animator a;
+    int index;
     private void OnMouseDown()
     {
         //print("addbtn pressed");
+        index = GM.customersInLine.Count;
         GameObject newcustomer = Instantiate(customer, new Vector3(327,-452,0), Quaternion.identity) as GameObject;
-        //Instantiate(customer, new Vector3(327,-452,0), Quaternion.identity);
         newcustomer.name = "Customer_" + index;
-        index++; 
+        a = newcustomer.GetComponent<Animator>();
+        a.SetFloat("Horizontal", -1);
         p = newcustomer.GetComponent<Patrol>();
         p.moving.x = -1;
         p.moving.y = 0;

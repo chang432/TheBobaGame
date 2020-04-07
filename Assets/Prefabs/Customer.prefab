@@ -115,13 +115,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97299dc4134b20a43a4776c8be1695dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}
   isAtFront: 0
   speed: 200
   animator: {fileID: 6472041077178806152}
   customer: {fileID: 6472041077178806164}
   customerRb: {fileID: 6472041077178806153}
-  moving: {x: -1, y: 0}
-  GameManager: {fileID: 0}
+  moving: {x: 0, y: 0}
 --- !u!50 &6472041077178806153
 Rigidbody2D:
   serializedVersion: 4
