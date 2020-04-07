@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopScript : MonoBehaviour
+public class CustomerSpawner : MonoBehaviour
 {
     public GM gameManager;
     public GameObject customer;
-    public Patrol patrol;
-    public int index;
+    private Patrol patrol;
+    private int index;
 
     // Start is called before the first frame update
     void Start()
     {
-        //InvokeRepeating("spawnCustomers", 4f, 4f);
-        //InvokeRepeating("moveCustomers", 1.0f, 1.0f);
+        InvokeRepeating("spawnCustomers", 4f, 4f);
     }
 
     private void spawnCustomers()
     {
-        print("spawn");
+        //print("spawn");
         index = GM.customersInLine.Count;
-        GameObject newcustomer = Instantiate(customer, new Vector3(327, -452, 0), Quaternion.identity) as GameObject;
+        GameObject newcustomer = Instantiate(customer, transform.position, Quaternion.identity) as GameObject;
         newcustomer.name = "Customer_" + index;
         patrol = newcustomer.GetComponent<Patrol>();
         patrol.moving.x = -1;
@@ -28,9 +27,9 @@ public class ShopScript : MonoBehaviour
         gameManager.addCustomerToLine(customer);
     }
 
-    private void moveCustomers()
+    private void OnDrawGizmos()
     {
-        print("move");
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 10);
     }
-    
 }

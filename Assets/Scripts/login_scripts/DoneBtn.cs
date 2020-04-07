@@ -10,8 +10,7 @@ public class DoneBtn : MonoBehaviour
     Patrol p;
     private void OnMouseDown()
     {
-        Debug.Log("done btn pressed");
-        InvokeRepeating("moveCustomers", 1.0f, 1.0f);
+        moveCustomers();
     }
 
     private void moveCustomers()
