@@ -19,11 +19,10 @@ public class DoneBtn : MonoBehaviour
 
             Physics2D.queriesStartInColliders = false;          // ignores hit on itself
             RaycastHit2D hit = Physics2D.Raycast(customer.transform.position, Vector3.up, 40);
-            //if (hit.collider != null) Debug.Log(customer.transform.name +" HIT "+hit.transform.gameObject.name);
+            if (hit.collider != null) Debug.Log(customer.transform.name +" HIT "+hit.transform.gameObject.name);
             
-
             if (p.isAtFront) {
-                p.animator.SetFloat("VerticalIdle", 0);
+                p.animator.SetFloat("VerticalIdle", -1);
                 p.moving.x = -1;
                 p.moving.y = 0;
             } else if (hit.collider == null) {
