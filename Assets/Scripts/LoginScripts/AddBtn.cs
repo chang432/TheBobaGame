@@ -15,7 +15,7 @@ public class AddBtn : MonoBehaviour
     {
         //print("addbtn pressed");
         index = GM.customersInLine.Count;
-        GameObject newcustomer = Instantiate(customer, new Vector3(327,-452,0), Quaternion.identity) as GameObject;
+        GameObject newcustomer = Instantiate(customer, GameObject.Find("CustomerSpawner").transform.position, Quaternion.identity) as GameObject;
         newcustomer.name = "Customer_" + index;
         a = newcustomer.GetComponent<Animator>();
         a.SetFloat("Horizontal", -1);
